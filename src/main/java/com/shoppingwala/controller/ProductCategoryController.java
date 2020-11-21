@@ -30,7 +30,7 @@ public class ProductCategoryController {
 	@RequestMapping(value="/category", method=RequestMethod.POST)
 	public String registerCategory(@ModelAttribute("category") ProductCategory category, ModelMap map) {
 		ProductCategory productCategory=categoryService.saveProductCategory(category);
-		System.out.println("product Name *********** "+productCategory.getProductCategoryName());
+		System.out.println("product Name *********** "+productCategory.getProductCategory());
 		map.addAttribute("category", new ProductCategory());
 //		map.addAttribute("category", productCategory);
 		List<ProductCategory> cats=categoryService.getCategories();

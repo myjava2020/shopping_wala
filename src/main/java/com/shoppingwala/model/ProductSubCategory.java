@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class ProductSubCategory {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productSubCatId;
 	
 	private String productCategory;
-	
-	private String productSubCatName;
-	
+
+	private String productSubCat;
+
 	private String productSubCatDesc;
 
 	public Integer getProductSubCatId() {
@@ -26,20 +26,20 @@ public class ProductSubCategory {
 		this.productSubCatId = productSubCatId;
 	}
 
-	public String getproductCategory() {
+	public String getProductCategory() {
 		return productCategory;
 	}
 
-	public void setproductCategory(String productCategory) {
+	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
 
-	public String getProductSubCatName() {
-		return productSubCatName;
+	public String getProductSubCat() {
+		return productSubCat;
 	}
 
-	public void setProductSubCatName(String productSubCatName) {
-		this.productSubCatName = productSubCatName;
+	public void setProductSubCat(String productSubCat) {
+		this.productSubCat = productSubCat;
 	}
 
 	public String getProductSubCatDesc() {
@@ -53,6 +53,9 @@ public class ProductSubCategory {
 	@Override
 	public String toString() {
 		return "ProductSubCategory [productSubCatId=" + productSubCatId + ", productCategory=" + productCategory
-				+ ", productSubCatName=" + productSubCatName + ", productSubCatDesc=" + productSubCatDesc + "]";
+				+ ", productSubCat=" + productSubCat + ", productSubCatDesc=" + productSubCatDesc + "]";
 	}
+
+
+
 }

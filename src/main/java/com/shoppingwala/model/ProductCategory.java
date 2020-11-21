@@ -1,6 +1,5 @@
 package com.shoppingwala.model;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,39 +10,41 @@ public class ProductCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer poductCategoryId;
+	private Integer productCategoryId;
 	
-	private String productCategoryName;
+	private String productCategory;
 	
-	private String productCategoryDesc;
+	private String productCatDesc;
 
-	public Integer getPoductCategoryId() {
-		return poductCategoryId;
+	public Integer getProductCategoryId() {
+		return productCategoryId;
 	}
 
-	public void setPoductCategoryId(Integer poductCategoryId) {
-		this.poductCategoryId = poductCategoryId;
+	public void setProductCategoryId(Integer productCategoryId) {
+		this.productCategoryId = productCategoryId;
 	}
 
-	public String getProductCategoryName() {
-		return productCategoryName;
+	public String getProductCategory() {
+		return productCategory;
 	}
 
-	public void setProductCategoryName(String productCategoryName) {
-		this.productCategoryName = productCategoryName;
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
 	}
 
-	public String getProductCategoryDesc() {
-		return productCategoryDesc;
+	public String getProductCatDesc() {
+		return productCatDesc;
 	}
 
-	public void setProductCategoryDesc(String productCategoryDesc) {
-		this.productCategoryDesc = productCategoryDesc;
+	public void setProductCatDesc(String productCatDesc) {
+		this.productCatDesc = productCatDesc;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductCategory [poductCategoryId=" + poductCategoryId + ", productCategoryName=" + productCategoryName
-				+ ", productCategoryDesc=" + productCategoryDesc + "]";
+		return "ProductCategory [productCategoryId=" + productCategoryId + ", productCategory=" + productCategory
+				+ ", productCatDesc=" + productCatDesc + "]";
 	}
+
+	
 }

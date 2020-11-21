@@ -2,68 +2,48 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Category</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
-<h2>Category</h2>
-	<form th:action="@{/category}" th:Object="${category}" method="post">
-		<div class="form-group row">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<label for="productCategoryName" style="font-size: 15px;">Product
-					Category:</label> <input type="text" class="form-control"
-					id="productCategoryName" placeholder="Enter category"
-					th:field="*{productCategoryName}"><br>
-				<br>
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<label for="productCategoryDesc" style="font-size: 15px;">Product
-					Description:</label> <input type="text" class="form-control"
-					id="productCategoryDesc" placeholder="Enter description"
-					th:field="*{productCategoryDesc}">
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<button class="btn btn-primary">Add Category</button>
-			</div>
-		</div>
+
+	<h2>Category Master</h2>
+
+
+	<form th:action="@{/category}" th:object="${category}" method="post">
+		<pre>
+	Product Category:   <input type="text" th:field="*{productCategory}">
+	
+	Description :       <input type="text" th:field="*{productCatDesc}">
+	
+	
+	    <button>Save</button>
+	
+	</pre>
 	</form>
-	<div class="container">
-		<div class="row col-md-7 table-responsive">
-			<table border="2" id="categoryTable" class="table">
-				<thead>
-					<tr>
-						<th>Serial No.</th>
-						<th>Product Category</th>
-						<th>Product Description</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${cats.empty}">
-						<td colspan="5"><span style="color: red">No categories
-								available.</span></td>
-					</tr>
-					<tr th:each="cat,catStatus:${cats}"
-						th:style="${catStatus.odd} ? 'color: gray' : 'color: blue;'">
-						<td th:text="${cat.poductCategoryId}"></td>
-						<td th:text="${cat.productCategoryName}"></td>
-						<td th:text="${cat.productCategoryDesc}"></td>
-						<td><a th:href="@{/delete/{id}(id=${cat.poductCategoryId})}">Delete</a>/
-							<a th:href="@{/update/{id}(id=${cat.poductCategoryId})}">Update</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+
+	<table border="2">
+		<thead>
+			<tr>
+				<th>Sr.No</th>
+				<th>Product Category</th>
+				<th>Product Description</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${cats.empty}">
+				<td colspan="4"><span style="color:red">No category available</span></td>
+			</tr>
+			<tr th:each="cat,catStatus : ${cats}">
+				<td th:text="${catStatus.index+1}"></td>
+				<td th:text="${cat.productCategory}"></td>
+				<td th:text="${cat.productCatDesc}"></td>
+				<td> <a th:href="@{/update/{id}(id=${cat.productCategoryId})}">Update</a> 
+				/ <a th:href="@{/delete/{id}(id=${cat.productCategoryId})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
 </body>
 </html>

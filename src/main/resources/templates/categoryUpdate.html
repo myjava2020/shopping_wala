@@ -19,17 +19,17 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="cal-xs-4">
 		<label for="productCategoryId" style="font-size:15px;">Product Id:</label>
-		<input type="text" class="form-control" id="productCategoryId" placeholder="Enter updated category" th:field="*{poductCategoryId}" readonly="readonly">
+		<input type="text" class="form-control" id="productCategoryId" placeholder="Enter updated category" th:field="*{productCategoryId}" readonly="readonly">
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="cal-xs-4">
 		<label for="productCategoryName" style="font-size:15px;">Product Category:</label>
-		<input type="text" class="form-control" id="productCategoryName" placeholder="Enter updated category" th:field="*{productCategoryName}">
+		<input type="text" class="form-control" id="productCategory" placeholder="Enter updated category" th:field="*{productCategory}">
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="cal-xs-4">
 		<label for="productCategoryDesc" style="font-size:15px;">Product Description:</label>
-		<input type="text" class="form-control" id="productCategoryDesc" placeholder="Enter updated description" th:field="*{productCategoryDesc}">
+		<input type="text" class="form-control" id="productCategoryDesc" placeholder="Enter updated description" th:field="*{productCatDesc}">
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="cal-xs-4">
@@ -55,11 +55,11 @@
 			</tr>
 			<tr th:each="cat,catStatus:${cats}" 
 			th:style="${catStatus.odd} ? 'color: gray' : 'color: blue;'">
-				<td th:text="${cat.poductCategoryId}"></td>
-				<td th:text="${cat.productCategoryName}"></td>
-				<td th:text="${cat.productCategoryDesc}"></td>
-				<td><a th:href="@{/delete/{id}(id=${cat.poductCategoryId})}">Delete</a>/
-				<a th:href="@{/update/{id}(id=${cat.poductCategoryId})}">Update</a></td>
+				<td th:text="${cat.productCategoryId}"></td>
+				<td th:text="${cat.productCategory}"></td>
+				<td th:text="${cat.productCatDesc}"></td>
+				<td><a th:href="@{/delete/{id}(id=${cat.productCategoryId})}">Delete</a>/
+				<a th:href="@{/update/{id}(id=${cat.productCategoryId})}">Update</a></td>
 			</tr>
 		</tbody>
 	</table>

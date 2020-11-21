@@ -27,9 +27,6 @@ public class ProductSubCategoryController {
 	@RequestMapping(value="/subcategory")
 	public String getCategories(ModelMap map) {
 		
-		List<ProductCategory> cat=new ArrayList<>();
-		map.addAttribute("cat", cat);
-		
 		List<ProductCategory> cats=productCatService.getCategories();
 		map.addAttribute("cats", cats);
 		

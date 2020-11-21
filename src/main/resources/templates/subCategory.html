@@ -2,80 +2,59 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Product Sub Category</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
-<h2>Sub Category</h2>
-	<form th:action="@{/subcategory}" th:Object="${subcategory}"
+	<h2>Category Master</h2>
+
+
+	<form th:action="@{/subcategory}" th:object="${subcategory}"
 		method="post">
-		<div class="form-group row">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="form-group col-md-8" th:object="${cat}">
-				<label for="productCategory"> Product Category Name:</label> 
-				<select	th:field="*{productCategory}" class="form-control">
-					<option value="">--Select--</option>
-					<option th:each="cat : ${cats}" value="${cat.productCategory}"
-						th:text="${cat.productCategory}" 
-						id="productCategory"></option>
-				</select>
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<label for="productSubCatName"> Product Sub Category Name:</label> <input
-					type="text" class="form-control" id="productsubcatName"
-					placeholder="Enter Product Sub Category Name"
-					th:field="*{productSubCatName}"><br>
-				<br>
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<label for="productSubCatDesc"> Product Sub Category
-					Description:</label> <input type="text" class="form-control"
-					id="productsubcatDesc"
-					placeholder="Enter Product Sub Category Description"
-					th:field="*{productSubCatDesc}"><br>
-				<br>
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<div class="cal-xs-4">
-				<button class="btn btn-primary">Add Sub Category</button>
-			</div>
-		</div>
+		<pre>
+		
+	 Product Category:   <select th:field="*{productCategory}">
+                         <option value=""> --SELECT--- </option>
+                         <option th:each="cat : ${cats}"
+                            th:value="${cat.productCategory}"
+                            th:text="${cat.productCategory}"/>
+                  </select>
+                  
+	Product Category:   <input type="text" th:field="*{productSubCat}">
+	
+	Description :       <input type="text" th:field="*{productSubCatDesc}">
+	
+	
+	    <button>Save</button>
+	
+	</pre>
 	</form>
-	 <div class="container">
-		<div class="row col-md-7 table-responsive">
-			<table border="2" id="subcategoryTable" class="table">
-				<thead>
-					<tr>
-						<th>Serial No.</th>
-						<th>Product Category</th>
-						<th>Product Sub Category</th>
-						<th>Product Sub Category Description</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${subcats.empty}">
-						<td colspan="5"><span style="color: red">No subcategory Available </span></td>
-					</tr>
-					<tr th:each="subcat:${subcats}">
-						<td th:text="${subcat.productSubCatId}"></td>
-						<td th:text="${subcat.productCategory}"></td>
-						<td th:text="${subcat.productSubCatName}"></td>
-						<td th:text="${subcat.productSubCatDesc}"></td>
-						<td><a>Delete</a>/<a>Update</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
- </body>
+
+	<table border="2">
+		<thead>
+			<tr>
+				<th>Sr.No</th>
+				<th>Product Sub-Category</th>
+				<th>Product Category</th>
+				<th>Product Description</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${subcats.empty}">
+				<td colspan="4"><span style="color: red">No category
+						available</span></td>
+			</tr>
+			<tr th:each="subcat,subcatStatus : ${subcats}">
+				<td th:text="${subcatStatus.index+1}"></td>
+				<td th:text="${subcat.productSubCat}"></td>
+				<td th:text="${subcat.productCategory}"></td>
+				<td th:text="${subcat.productSubCatDesc}"></td>
+				<td><a th:href="@{/updateSubCat/{id}(id=${subcat.productSubCatId})}">Update</a>
+					/ <a th:href="@{/deleteSubCat/{id}(id=${subcat.productSubCatId})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
 </html>
